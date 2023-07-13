@@ -9,9 +9,13 @@ function App() {
   const {
     register,
     handleSubmit,
-    watch,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm();
+  const handleEmailFocus = () => {
+    setError("email", { type: "manual", message: "" });
+  };
   const onSubmit = (data) => {
     console.log(data);
     setEmail(data.email);
@@ -36,19 +40,23 @@ function App() {
                 <div className="InputLabel">
                   <label>Email address</label>
                   {errors.email && (
-                    <label className="errorLabel">{errors.email.message}</label>
+                    <label className="errorLabel error">
+                      {errors.email.message}
+                    </label>
                   )}
                 </div>
                 <input
                   id="email"
                   placeholder="email@company.com"
                   {...register("email", {
-                    required: "required",
+                    required: "Valid Email Required",
                     pattern: {
                       value: /\S+@\S+\.\S+/,
                       message: "Entered value does not match email format",
                     },
                   })}
+                  onFocus={handleEmailFocus}
+                  className={errors.email ? "errorInput" : ""}
                 />
                 <button type="submit">Subscribe to monthly newsletter</button>
               </form>

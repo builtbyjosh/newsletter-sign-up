@@ -53,6 +53,13 @@ li::before {
 }
 .errorLabel {
   margin-left: auto;
+  color: hsl(4, 100%, 67%);
+}
+
+.errorInput {
+  background-color: hsla(4, 100%, 67%, 0.4);
+  border-color: hsl(4, 100%, 67%);
+  border-width: 1px;
 }
 
 .Info input {
