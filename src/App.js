@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import illistration from "./images/illustration-sign-up-desktop.svg";
 import check from "./images/icon-success.svg";
@@ -13,14 +13,18 @@ function App() {
     clearErrors,
     formState: { errors },
   } = useForm();
-  const handleEmailFocus = () => {
-    setError("email", { type: "manual", message: "" });
-  };
+
   const onSubmit = (data) => {
     console.log(data);
     setEmail(data.email);
-    setIsSuccess(true);
+    // setIsSuccess(true);
   };
+  useEffect(() => {
+    if (email) {
+      setIsSuccess(true);
+    }
+  }, [email]);
+
   return (
     <div className="Page">
       {!isSuccess && (
@@ -55,7 +59,7 @@ function App() {
                       message: "Entered value does not match email format",
                     },
                   })}
-                  onFocus={handleEmailFocus}
+                  onChange={() => clearErrors("email")}
                   className={errors.email ? "errorInput" : ""}
                 />
                 <button type="submit">Subscribe to monthly newsletter</button>
