@@ -2,9 +2,16 @@
   display: flex;
   font-family: "Roboto";
   padding: 20px;
-  margin: 20px;
+  margin: 50px auto;
   border-radius: 25px;
   background-color: white;
+  max-width: 750px;
+  max-height: 500px;
+}
+
+.Page {
+  margin: 0;
+  padding: 0;
 }
 
 .Info {
@@ -65,8 +72,8 @@ li::before {
 .Info input {
   height: 40px;
   width: 100%;
+  max-width: 100%;
   border-radius: 8px;
-
   margin-bottom: 10px;
   box-sizing: border-box;
 }
@@ -80,12 +87,17 @@ button {
 }
 
 .Image {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
   width: 50%;
   padding: 10px;
 }
 .Image img {
   height: auto;
   width: 100%;
+  max-width: 100%; /* Ensure the image doesn't exceed the container */
+  margin: auto;
 }
 
 .successMsg {
@@ -95,10 +107,56 @@ button {
   z-index: 1;
   height: 350px;
   width: 350px;
-  margin: auto;
+  margin: 50px auto;
   padding: 20px;
 }
 
 .successMsg button {
   margin-top: 15px;
+}
+
+@media (max-width: 375px) {
+  .successMsg {
+    height: 100vh;
+    max-width: 375px;
+    border-radius: 0;
+    padding: 20px;
+  }
+  .App {
+    flex-direction: column-reverse;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    align-items: flex-start;
+    max-height: fit-content;
+  }
+  .Image {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+  }
+
+  .Image img {
+    object-fit: contain;
+    width: 100%;
+    transform: translateY(-50px);
+  }
+
+  .Info {
+    width: 100%;
+    padding: 0;
+  }
+  .Info input {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  .Container {
+    padding: 0 25px;
+  }
+  button {
+    margin-bottom: 50px;
+  }
 }

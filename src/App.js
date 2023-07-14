@@ -22,11 +22,11 @@ function App() {
     setIsSuccess(true);
   };
   return (
-    <>
+    <div className="Page">
       {!isSuccess && (
         <div className="App">
           <div className="Info">
-            <div>
+            <div className="Container">
               <h1>Stay updated!</h1>
               <p>Join 60,000+ product managers receiving monthly updates on:</p>
               <ul>
@@ -36,7 +36,7 @@ function App() {
               </ul>
             </div>
             <div>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form className="Container" onSubmit={handleSubmit(onSubmit)}>
                 <div className="InputLabel">
                   <label>Email address</label>
                   {errors.email && (
@@ -63,7 +63,7 @@ function App() {
             </div>
           </div>
           <div className="Image">
-            <img src={illistration} />{" "}
+            <img src={illistration} />
           </div>
         </div>
       )}
@@ -79,7 +79,7 @@ function App() {
           <button onClick={() => setIsSuccess(false)}>Dismiss message</button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
